@@ -1,0 +1,241 @@
+<div class="row d-flex justify-content-end col-12 mb-3">
+  <div class="col-md-3 col-sm-auto my-2">
+    <div class="input-group">
+      <input
+        class="form-control border-end-0 border"
+        [(ngModel)]="searchText"
+      />
+
+      <a class="btn border-start-0 border">
+        <i class="bi bi-search"></i>
+      </a>
+    </div>
+  </div>
+  <!--  -->
+  <div class="col-md-3 col-sm-auto my-2">
+    <button class="btn add">
+      <i class="bi bi-plus-circle pe-2"></i>Add Deal
+    </button>
+  </div>
+</div>
+<!--  -->
+
+<div class="">
+  <div class="card-deck cardsZone row d-flex justify-content-center">
+    <div class="card myCards">
+      <div class="card-header">
+        <div class="text-center">
+          <span class="fw-bold fs-6" style="color: #0c233e">Focus List</span>
+        </div>
+      </div>
+      <div
+        class="mx-auto"
+        #activeList="cdkDropList"
+        cdkDropList
+        cdkDropListOrientation="vertical"
+        [cdkDropListData]="FocusList"
+        [cdkDropListConnectedTo]="[inactiveList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let deal of FocusList | filter : searchText" cdkDrag>
+          <div class="card mx-auto my-2" style="width: 14rem">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ deal.first_name }} {{ deal.last_name }}
+              </h5>
+
+              <a
+                type="button"
+                class="bg-secondary text-white rounded px-3 me-1 status"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="state= {{ deal.state }}"
+              >
+                {{ deal.state }}
+              </a>
+              <a
+                type="button"
+                class="bground text-white rounded px-1 status"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="probability_status= {{ deal.probability_status }}"
+              >
+                {{ deal.probability_status }}
+              </a>
+              <p class="card-text text-secondary mb-0 mt-3 fs-7">
+                <i class="bi bi-telephone-fill"></i> {{ deal.phone }}
+              </p>
+              <p class="card-text text-secondary fs-7">
+                <i class="bi bi-calendar"></i> {{ deal.date }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card myCards">
+      <div class="card-header cardHeader">
+        <div class="text-center">
+          <span class="fw-bold fs-6" style="color: #0c233e"
+            >Contact Made List</span
+          >
+        </div>
+      </div>
+      <div
+        class="mx-auto"
+        #inactiveList="cdkDropList"
+        cdkDropList
+        cdkDropListOrientation="vertical"
+        [cdkDropListData]="contList"
+        [cdkDropListConnectedTo]="[activeList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let deal of contList | filter : searchText" cdkDrag>
+          <div class="card mx-auto my-2" style="width: 14rem">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ deal.first_name }} {{ deal.last_name }}
+              </h5>
+
+              <a
+                type="button"
+                class="bg-secondary text-white rounded px-3 me-1 status"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="state= {{ deal.state }}"
+              >
+                {{ deal.state }}
+              </a>
+              <a
+                type="button"
+                class="bground text-white rounded px-1 status"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="probability_status= {{ deal.probability_status }}"
+              >
+                {{ deal.probability_status }}
+              </a>
+              <p class="card-text text-secondary mb-0 mt-3 fs-7">
+                <i class="bi bi-telephone-fill"></i> {{ deal.phone }}
+              </p>
+              <p class="card-text text-secondary fs-7">
+                <i class="bi bi-calendar"></i> {{ deal.date }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card myCards">
+      <div class="card-header cardHeader">
+        <div class="text-center">
+          <span class="fw-bold fs-6" style="color: #0c233e"
+            >Offer Sent List</span
+          >
+        </div>
+      </div>
+      <div
+        class="mx-auto"
+        #rList="cdkDropList"
+        cdkDropList
+        cdkDropListOrientation="vertical"
+        [cdkDropListData]="OfferList"
+        [cdkDropListConnectedTo]="[inactiveList, DList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let deal of OfferList | filter : searchText" cdkDrag>
+          <div class="card mx-auto my-2" style="width: 14rem">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ deal.first_name }} {{ deal.last_name }}
+              </h5>
+
+              <a
+                type="button"
+                class="bg-secondary text-white rounded px-3 me-1 status"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="state= {{ deal.state }}"
+              >
+                {{ deal.state }}
+              </a>
+              <a
+                type="button"
+                class="bground text-white rounded px-1 status"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="probability_status= {{ deal.probability_status }}"
+              >
+                {{ deal.probability_status }}
+              </a>
+              <p class="card-text text-secondary mb-0 mt-3 fs-7">
+                <i class="bi bi-telephone-fill"></i> {{ deal.phone }}
+              </p>
+              <p class="card-text text-secondary fs-7">
+                <i class="bi bi-calendar"></i> {{ deal.date }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card myCards">
+      <div class="card-header cardHeader">
+        <div class="text-center">
+          <span class="fw-bold fs-6" style="color: #0c233e"
+            >Getting Ready List</span
+          >
+        </div>
+      </div>
+
+      <div
+        class="mx-auto"
+        #DList="cdkDropList"
+        cdkDropList
+        cdkDropListOrientation="vertical"
+        [cdkDropListData]="ReadyList"
+        [cdkDropListConnectedTo]="[rList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let deal of ReadyList | filter : searchText">
+          <div
+            class="card mysmallCcards mx-auto my-2"
+            style="width: 14rem"
+            cdkDrag
+          >
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ deal.first_name }} {{ deal.last_name }}
+              </h5>
+
+              <a
+                type="button"
+                class="bg-secondary text-white rounded px-3 me-1 status"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="state= {{ deal.state }}"
+              >
+                {{ deal.state }}
+              </a>
+              <a
+                type="button"
+                class="bground text-white rounded px-1 status"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="probability_status= {{ deal.probability_status }}"
+              >
+                {{ deal.probability_status }}
+              </a>
+              <p class="card-text text-secondary mb-0 mt-3 fs-7">
+                <i class="bi bi-telephone-fill"></i> {{ deal.phone }}
+              </p>
+              <p class="card-text text-secondary fs-7">
+                <i class="bi bi-calendar"></i> {{ deal.date }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

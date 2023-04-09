@@ -1,0 +1,21 @@
+.card {
+  cursor: pointer;
+  width: 250px;
+  margin: 20px;
+}
+.status {
+  text-decoration: none;
+}
+.card-title {
+  color: #0c233e;
+  font-weight: bold;
+  height: 24px;
+  overflow: hidden;
+}
+.bground {
+  background-color: #007ac2;
+}
+.add {
+  background-color: #007ac2 !important;
+  color: white;
+}
